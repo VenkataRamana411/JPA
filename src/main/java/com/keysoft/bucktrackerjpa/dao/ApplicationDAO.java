@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Transactional
 @Repository
@@ -33,6 +32,16 @@ public class ApplicationDAO implements  IApplicationDAO {
     @Override
     public Application getApplicationById(int id) {
         return entityManager.find(Application.class,id);
+    }
+
+    @Override
+    public void updateApplication(Application application) {
+        Application app = getApplicationById(application.getId());
+        app.setName(application.getName());
+        app.setId(application.getId());
+        app.setDescription(application.getDescription());
+        app.setOwner(application.getOwner());
+        entityManager.flush();
     }
 
 }

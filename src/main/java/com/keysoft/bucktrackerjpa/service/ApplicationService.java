@@ -5,8 +5,6 @@ import com.keysoft.bucktrackerjpa.entity.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ApplicationService implements IApplicationService{
 
@@ -26,5 +24,10 @@ public class ApplicationService implements IApplicationService{
     @Override
     public Application getApplicationById(int id) {
         return applicationDAO.getApplicationById(id);
+    }
+
+    @Override
+    public void updateApplication(Application application) {
+       applicationDAO.updateApplication(application);
     }
 }
