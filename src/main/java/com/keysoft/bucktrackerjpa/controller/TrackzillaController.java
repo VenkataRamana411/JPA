@@ -26,5 +26,11 @@ public class TrackzillaController {
         headers.setLocation(builder.path("/application/{id}").buildAndExpand(application.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
+
+    @GetMapping("/application/{id}")
+    public ResponseEntity<Application> getApplicationById(@PathVariable("id") Integer id){
+        Application app = applicationService.getApplicationById(id);
+        return new ResponseEntity<Application>(app,HttpStatus.OK);
+    }
 }
 

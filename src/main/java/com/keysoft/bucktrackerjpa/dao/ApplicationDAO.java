@@ -18,6 +18,7 @@ public class ApplicationDAO implements  IApplicationDAO {
     @Override
     public void addApplication(Application application) {
         //TODO - implement creating a new application using the entityManager
+        entityManager.persist(application);
 
     }
 
@@ -27,6 +28,11 @@ public class ApplicationDAO implements  IApplicationDAO {
         String jpql = "from Application as a WHERE a.name = ? and a.owner = ?";
         int count = entityManager.createQuery(jpql).setParameter(0, name).setParameter(1, owner).getResultList().size();
         return count > 0;
+    }
+
+    @Override
+    public Application getApplicationById(int id) {
+        return entityManager.find(Application.class,id);
     }
 
 }

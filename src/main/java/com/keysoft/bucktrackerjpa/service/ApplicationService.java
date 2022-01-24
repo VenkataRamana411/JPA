@@ -22,4 +22,9 @@ public class ApplicationService implements IApplicationService{
             return true;
         }
     }
+
+    @Override
+    public Application getApplicationById(int id) {
+        return applicationDAO.getApplicationById(id);
+    }
 }
